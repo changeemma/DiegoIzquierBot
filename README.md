@@ -1,1 +1,1 @@
-# DiegoIzquierBot
+# diego-izquierbot
