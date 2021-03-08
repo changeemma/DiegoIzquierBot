@@ -1,3 +1,9 @@
+# DiegoIzquierBot
+*_cfg.py ## ignore config files
+
+# Code
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

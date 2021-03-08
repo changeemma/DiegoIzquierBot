@@ -1,0 +1,6 @@
+# PFSENSE
+PFSENSE_HOST = "192.168.1.1"
+PFSENSE_USER = "user"
+PFSENSE_WANGW_SOCK = "/var/run/dpinger_WANGW.sock"
+PFSENSE_SCPCGW_SOCK = "/var/run/dpinger_SCPCGW.sock"
+PFSENSE_GATEWAY_LOGFILE = "/var/log/gateways.log"

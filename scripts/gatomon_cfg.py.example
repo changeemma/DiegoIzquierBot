@@ -1,0 +1,33 @@
+# GATOMON WAMGW
+
+GATOMON_WANGW_LOGFILE = "/tmp/gatomon-wangw.log"
+GATOMON_WANGW_CHECK_INTERVAL = 15
+
+GATOMON_WANGW_GATEWAY = "WANGW"
+GATOMON_WANGW_ALARM_THRESHOLD = {
+    "rtt": 1800,
+    "rttsd": 1000,
+    "loss": 40,
+}
+GATOMON_WANGW_DISMISS_THRESHOLD = {
+    "rtt": 800,
+    "rttsd": 1000,
+    "loss": 20,
+}
+
+# GATOMON SCPCGW
+
+GATOMON_SCPCGW_LOGFILE = "/tmp/gatomon-scpcgw.log"
+GATOMON_SCPCGW_CHECK_INTERVAL = 15
+
+GATOMON_SCPCGW_GATEWAY = "SCPCGW"
+GATOMON_SCPCGW_ALARM_THRESHOLD = {
+    "rtt": 1800,
+    "rttsd": 1000,
+    "loss": 40,
+}
+GATOMON_SCPCGW_DISMISS_THRESHOLD = {
+    "rtt": 800,
+    "rttsd": 1000,
+    "loss": 20,
+}
