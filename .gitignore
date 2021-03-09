@@ -1,5 +1,6 @@
 # DiegoIzquierBot
-*cfg.py ## ignore config files
+# ignore configfiles
+*cfg.py
 
 # Code
 .vscode
