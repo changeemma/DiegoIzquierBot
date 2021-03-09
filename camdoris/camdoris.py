@@ -7,8 +7,8 @@ import time
 import requests
 from telnetlib import Telnet
 
-from camdoris_cfg import *
-from bot.cabilbot import sendMessageToAdmin
+from camdoris.camdoris_cfg import *
+from izquierbot.izquierbot import sendMessageToAdmin
 
 
 class Camdoris(object):

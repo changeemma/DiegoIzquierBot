@@ -1,5 +1,5 @@
 from pefesens.pefesens import *
-from bot.cabilbot import sendMessageToAdmin
+from izquierbot.izquierbot import sendMessageToAdmin
 
 import logging
 import time
