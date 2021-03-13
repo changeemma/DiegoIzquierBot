@@ -1,10 +1,15 @@
 # diego-izquierbot
 
 ## Requerimentos
-- Instalar claves ssh con el servidor pfSense.
+- Instalar claves SSH con el servidor pfSense.
+- Python 3.6 o mayor
 - pip3
+- Telegram API Token
 
-## Instalación
-´´´bash
+## Instalación de librerías
+```bash
 pip3 install -r requirements.txt -e .
-´´´
+```
+### Notas adicionales
+
+Se deben generar los archivos `*_cfg.py` en base a los archivos `*_cfg.py.example`
