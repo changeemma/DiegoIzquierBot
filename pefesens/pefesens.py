@@ -4,7 +4,7 @@ from pefesens.helpers import exec_command_ssh
 
 def pfctlKill(target):
     _, stderr = exec_command_ssh(
-        PFSENSE_HOST, PFSENSE_USER, PFSENSE_PASSWORD, f"pfctl -k {target}"
+        PFSENSE_HOST, PFSENSE_USER, f"pfctl -k {target}"
     )
     # byte object with eol
     return "\n".join(stderr).strip()
@@ -28,7 +28,6 @@ def gatewayLog(gw, nlines=30):
     stdout, _ = exec_command_ssh(
         PFSENSE_HOST,
         PFSENSE_USER,
-        PFSENSE_PASSWORD,
         f"clog {PFSENSE_GATEWAY_LOGFILE} | grep {gw}| tail -{nlines}",
     )
     return [l.strip() for l in stdout]
