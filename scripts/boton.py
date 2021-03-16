@@ -30,7 +30,7 @@ def main():
 if __name__ == "__main__":
     logging.basicConfig(
         filename=BOTON_LOGFILE,
-        level=logging.DEBUG,
+        level=logging.INFO,
         filemode="a",
         format="[%(asctime)s] [%(levelname)s] [boton] %(message)s",
     )
