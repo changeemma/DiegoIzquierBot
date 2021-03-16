@@ -21,7 +21,7 @@ class Camdoris(object):
         self.check_interval = check_interval
         self.site_down_alarm_triggered = False
 
-    def sendTelnetCommand(conn, cmd, prompt):
+    def sendTelnetCommand(self, conn, cmd, prompt=CAMDORIS_PROMPT_REGEX):
         conn.write(f"{cmd}\n".encode("ascii"))
         match, _, data = conn.expect([prompt.encode("ascii")], timeout=self.timeout)
         if match == -1:
@@ -36,11 +36,9 @@ class Camdoris(object):
 
         with Telnet(host=self.host, port=self.port, timeout=self.timeout) as conn:
             conn.read_until("Username> ".encode("ascii"))
-            output += self.sendTelnetCommand(conn, "login", CAMDORIS_PROMPT_REGEX)
-            output += self.sendTelnetCommand(conn, "show ftp", CAMDORIS_PROMPT_REGEX)
-            output += self.sendTelnetCommand(
-                conn, "show image mask", CAMDORIS_PROMPT_REGEX
-            )
+            output += self.sendTelnetCommand(conn, "login")
+            output += self.sendTelnetCommand(conn, "show ftp")
+            output += self.sendTelnetCommand(conn, "show image mask")
 
         splitted = output.decode().split("\r\n")
         _ = splitted.pop(0)
@@ -67,29 +65,15 @@ class Camdoris(object):
 
     def configure(self):
         with Telnet(host=self.host, port=self.port, timeout=self.timeout) as conn:
-
-            def send_cmd(cmd, prompt):
-                conn.write((cmd + "\n").encode("ascii"))
-                match, _, data = conn.expect(
-                    [prompt.encode("ascii")], timeout=self.timeout
-                )
-                if match == -1:
-                    logging.error(
-                        f"Reached timeout expecting prompt ('{prompt}'). Received from server: '{data.decode()}'"
-                    )
-                    raise TimeoutError()
-
-            conn.read_until("Username> ")
-            self.sendTelnetCommand(conn, self.user, CAMDORIS_PROMPT_REGEX)
+            conn.read_until("Username> ".encode("ascii"))
+            self.sendTelnetCommand(conn, self.user)
             self.sendTelnetCommand(conn, "set privilege over", "Password> ")
-            self.sendTelnetCommand(conn, self.password, CAMDORIS_PROMPT_REGEX)
+            self.sendTelnetCommand(conn, self.password)
 
             for cmd in CAMDORIS_CONFIGURATION_CMD_LIST:
-                self.sendTelnetCommand(conn, cmd, CAMDORIS_PROMPT_REGEX)
+                self.sendTelnetCommand(conn, cmd)
 
-            self.sendTelnetCommand(
-                conn, CAMDORIS_TEST_TRIGGER_CMD, CAMDORIS_PROMPT_REGEX
-            )
+            self.sendTelnetCommand(conn, CAMDORIS_TEST_TRIGGER_CMD)
 
     def monitor(self):
         while True:
