@@ -46,7 +46,7 @@ def main():
 if __name__ == "__main__":
     logging.basicConfig(
         filename=GATOMON_SCPCGW_LOGFILE,
-        level=logging.DEBUG,
+        level=logging.INFO,
         filemode="a",
         format="[%(asctime)s] [%(levelname)s] [gatomon-scpcgw] %(message)s",
     )
